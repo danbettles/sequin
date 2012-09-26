@@ -1,0 +1,23 @@
+{
+    "name": "danbettles/sequin",
+    "type": "library",
+    "description": "A simple PHP library for building query-strings for Lucene-based search engines (e.g. Solr)",
+    "keywords": ["solr", "lucene", "query", "builder", "search"],
+    "homepage": "https://github.com/danbettles/sequin",
+    "license": "MIT",
+    "authors":
+    [
+        {
+            "name":     "Dan Bettles",
+            "homepage": "http://danbettles.net/",
+            "role":     "Developer"
+        }
+    ],
+    "require":
+    {
+        "php"         : ">=5.3.1"
+    },
+    "autoload": {
+        "psr-0": { "Sequin": "src/" }
+    }
+}

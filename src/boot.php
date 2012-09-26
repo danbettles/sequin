@@ -5,5 +5,5 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  */
 
-require_once 'Term.php';
-require_once 'Query.php';
+require_once __DIR__ . '/Sequin/Term.php';
+require_once __DIR__ . '/Sequin/Query.php';

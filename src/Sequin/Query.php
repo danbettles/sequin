@@ -5,7 +5,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  */
 
-namespace sequin;
+namespace Sequin;
 
 /**
  * @author Dan Bettles <dan@danbettles.net>
@@ -17,19 +17,19 @@ class Query extends Term {
      * 
      * Initially, the active term will be the query itself
      * 
-     * @var object sequin\Term
+     * @var object Sequin\Term
      */
     private $oActiveTerm;
 
     /**
      * The query 'containing' this query, or NULL if this is the outermost query
      * 
-     * @var object|null sequin\Query
+     * @var object|null Sequin\Query
      */
     private $oOwnerQuery = null;
 
     /**
-     * @param string|sequin\Term $p_value
+     * @param string|Sequin\Term $p_value
      * @param string|null [$p_fieldName]
      * @param int [$p_boostFactor]
      */
@@ -39,14 +39,14 @@ class Query extends Term {
     }
 
     /**
-     * @param object $p_oActiveTerm sequin\Term
+     * @param object $p_oActiveTerm Sequin\Term
      */
     protected function setActiveTerm(Term $p_oActiveTerm) {
         $this->oActiveTerm = $p_oActiveTerm;
     }
 
     /**
-     * @return object sequin\Term
+     * @return object Sequin\Term
      */
     protected function activeTerm() {
         return $this->oActiveTerm;
@@ -54,8 +54,8 @@ class Query extends Term {
 
     /**
      * @param string $p_operator
-     * @param object $p_oRightTerm sequin\Term
-     * @return object sequin\Term
+     * @param object $p_oRightTerm Sequin\Term
+     * @return object Sequin\Term
      */
     private function joinWithActiveTerm($p_operator, Term $p_oRightTerm) {
         $joinMethodName = strtolower($p_operator) . 'Right';
@@ -66,7 +66,7 @@ class Query extends Term {
     /**
      * @param string $p_operator
      * @param array $p_aArgument
-     * @return object sequin\Term
+     * @return object Sequin\Term
      */
     private function joinNewTermWithActiveTerm($p_operator, array $p_aArgument) {
         $oTermClass = new \ReflectionClass(__NAMESPACE__ . '\\Term');
@@ -75,7 +75,7 @@ class Query extends Term {
     }
 
     /**
-     * @return object sequin\Term
+     * @return object Sequin\Term
      */
     public function andTerm() {
         $this->joinNewTermWithActiveTerm(self::OPERATOR_AND, func_get_args());
@@ -83,7 +83,7 @@ class Query extends Term {
     }
 
     /**
-     * @return object sequin\Term
+     * @return object Sequin\Term
      */
     public function orTerm() {
         $this->joinNewTermWithActiveTerm(self::OPERATOR_OR, func_get_args());
@@ -91,7 +91,7 @@ class Query extends Term {
     }
 
     /**
-     * @return object sequin\Term
+     * @return object Sequin\Term
      */
     public function notTerm() {
         $this->joinNewTermWithActiveTerm(self::OPERATOR_NOT, func_get_args());
@@ -106,14 +106,14 @@ class Query extends Term {
     }
 
     /**
-     * @param object $p_oOwnerQuery sequin\Query
+     * @param object $p_oOwnerQuery Sequin\Query
      */
     protected function setOwnerQuery($p_oOwnerQuery) {
         $this->oOwnerQuery = $p_oOwnerQuery;
     }
 
     /**
-     * @return object sequin\Query
+     * @return object Sequin\Query
      */
     protected function ownerQuery() {
         return $this->oOwnerQuery;
@@ -122,7 +122,7 @@ class Query extends Term {
     /**
      * @param string $p_operator
      * @param array $p_aArgument
-     * @return object sequin\Term
+     * @return object Sequin\Term
      */
     private function joinNewQueryWithActiveTerm($p_operator, array $p_aArgument) {
         $aArgument = $p_aArgument;
@@ -145,21 +145,21 @@ class Query extends Term {
     }
 
     /**
-     * @return object sequin\Query
+     * @return object Sequin\Query
      */
     public function andQuery() {
         return $this->joinNewQueryWithActiveTerm(self::OPERATOR_AND, func_get_args());
     }
 
     /**
-     * @return object sequin\Query
+     * @return object Sequin\Query
      */
     public function orQuery() {
         return $this->joinNewQueryWithActiveTerm(self::OPERATOR_OR, func_get_args());
     }
 
     /**
-     * @return object sequin\Query
+     * @return object Sequin\Query
      */
     public function notQuery() {
         return $this->joinNewQueryWithActiveTerm(self::OPERATOR_NOT, func_get_args());
@@ -170,7 +170,7 @@ class Query extends Term {
      * 
      * Returns the current query if there is no subquery to end
      * 
-     * @return object sequin\Query
+     * @return object Sequin\Query
      */
     public function endQuery() {
         if (is_null($this->ownerQuery())) {

@@ -5,7 +5,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  */
 
-namespace sequin;
+namespace Sequin;
 
 /**
  * @author Dan Bettles <dan@danbettles.net>
@@ -53,7 +53,7 @@ class Term {
     private $operator = null;
 
     /**
-     * @var object|null sequin\Term
+     * @var object|null Sequin\Term
      */
     private $oRightTerm = null;
 
@@ -162,14 +162,14 @@ class Term {
     }
 
     /**
-     * @param object $p_oRightTerm sequin\Term
+     * @param object $p_oRightTerm Sequin\Term
      */
     protected function setRightTerm(Term $p_oRightTerm) {
         $this->oRightTerm = $p_oRightTerm;
     }
 
     /**
-     * @return object|null sequin\Term
+     * @return object|null Sequin\Term
      */
     public function rightTerm() {
         return $this->oRightTerm;
@@ -177,8 +177,8 @@ class Term {
 
     /**
      * @param string $p_operator
-     * @param object $p_oRightTerm sequin\Term
-     * @return object sequin\Term
+     * @param object $p_oRightTerm Sequin\Term
+     * @return object Sequin\Term
      */
     private function join($p_operator, Term $p_oRightTerm) {
         $this->setOperator($p_operator);
@@ -187,21 +187,21 @@ class Term {
     }
 
     /**
-     * @param object $p_oRightTerm sequin\Term
+     * @param object $p_oRightTerm Sequin\Term
      */
     public function andRight(Term $p_oRightTerm) {
         return $this->join(self::OPERATOR_AND, $p_oRightTerm);
     }
 
     /**
-     * @param object $p_oRightTerm sequin\Term
+     * @param object $p_oRightTerm Sequin\Term
      */
     public function orRight(Term $p_oRightTerm) {
         return $this->join(self::OPERATOR_OR, $p_oRightTerm);
     }
 
     /**
-     * @param object $p_oRightTerm sequin\Term
+     * @param object $p_oRightTerm Sequin\Term
      */
     public function notRight(Term $p_oRightTerm) {
         return $this->join(self::OPERATOR_NOT, $p_oRightTerm);
