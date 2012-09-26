@@ -10,18 +10,29 @@ Query-strings are assembled using the fluent interface exposed by Sequin's `Quer
 
 Sequin requires PHP version 5.3 or later; it uses no third-party libraries.
 
-##Installation##
+##Installation (via Composer)##
+
+1. Include the following in your `composer.json` file:
+
+    require: {
+        ...
+        'danbettles/sequin': 'dev-master'
+    }
+
+2. Run `composer.phar update`
+
+##Installation (manual)##
 
 1. Download/clone the library.
-1. Import the code into your application by `include`ing `include/boot.php`.
+2. Import the code into your application by `include`ing `src/boot.php`.
 
 ##Usage##
 
 The following&mdash;only slightly contrived&mdash;example demonstrates a good selection of Sequin's features.  Here we build a query-string to search for soundtracks by Thomas Newman in the index of an imaginary online music retailer.
 
-    require_once 'path/to/sequin/include/boot.php';
+    require_once 'path/to/sequin/src/boot.php';
     
-    $oQuery = sequin\Query::newInstance('"Thomas Newman"')
+    $oQuery = Sequin\Query::newInstance('"Thomas Newman"')
         ->andTerm('soundtrack', null, 3)
         ->andQuery('music', 'dept')
             ->orTerm('film')
