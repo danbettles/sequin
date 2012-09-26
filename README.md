@@ -12,14 +12,15 @@ Sequin requires PHP version 5.3 or later; it uses no third-party libraries.
 
 ##Installation (via Composer)##
 
-1. Include the following in your `composer.json` file:
+Include the following in your `composer.json` file:
 
-    require: {
+    require: 
+    {
         ...
         'danbettles/sequin': 'dev-master'
     }
 
-2. Run `composer.phar update`
+Then, run `composer.phar update`
 
 ##Installation (manual)##
 
